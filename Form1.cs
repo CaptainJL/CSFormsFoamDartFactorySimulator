@@ -8,7 +8,7 @@ namespace CSFormsFoamDartFactorySimulator
 
         private CreditsSystem cSystem;
         private FoamDartsSystem fdSystem;
-        private int formFPS = 5;
+        private float formFPS = 5;
         private ulong startingCredits = 1000;
 
         public Form1()
@@ -17,7 +17,7 @@ namespace CSFormsFoamDartFactorySimulator
 
             timer1 = new System.Windows.Forms.Timer();
             timer1.Tick += new EventHandler(TickRun);
-            timer1.Interval = 1000 / formFPS;    // 1 FPS frames
+            timer1.Interval = 1000 / (int)formFPS;    // 1 FPS frames
             timer1.Start();
 
             cSystem = new CreditsSystem(startingCredits);
@@ -58,8 +58,4 @@ namespace CSFormsFoamDartFactorySimulator
 
 
     }
-
-
-
-
 }
