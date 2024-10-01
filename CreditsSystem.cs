@@ -8,8 +8,9 @@ namespace CSFormsFoamDartFactorySimulator
 {
     internal class CreditsSystem
     {
-        private ulong _credits;
-        public ulong Credits 
+        private double _updateRate;
+        private double _credits;
+        public double Credits 
         {
             get
             {
@@ -24,21 +25,28 @@ namespace CSFormsFoamDartFactorySimulator
                 _credits = value;
             }
         }
-        public ulong CreditsTotal { get; set; }
-        public List<ulong> CreditsSumList { get; set; }
-        public List<double> CreditsMultList { get; set; }
 
-        public CreditsSystem(ulong startingCredits)
+        public double CreditsTotal { get; set; }
+        public List<double> CreditsSumList { get; set; }
+        public List<double> CreditsMultList { get; set; }
+        public double CreditsRate { get; set; }
+
+        public CreditsSystem(double startingCredits, double updateRate)
         {
             Credits = startingCredits;
             CreditsTotal = Credits;
-            CreditsSumList = new List<ulong>();
-            CreditsMultList = new List<double>();   
+            CreditsSumList = new List<double>();
+            CreditsMultList = new List<double>();
+            _updateRate = updateRate;
         }
 
-        private ulong CreditsSum() { return CreditsSumList.Aggregate((a, c) => a + c); }
+        private double CreditsSum() { return CreditsSumList.Aggregate((a, c) => a + c); }
         private double CreditsMultiplier() { return (CreditsMultList.Count() > 0) ? CreditsMultList.Aggregate((a, c) => a * c) : 1; }
-        public void CreditsUpdate() { Credits += (ulong)(CreditsMultiplier() * CreditsSum()); }
+        public void CreditsUpdate() 
+        {
+            CreditsRate = CreditsMultiplier() * CreditsSum();
+            Credits += 1.0f / _updateRate * CreditsRate; 
+        }
 
     }
 }

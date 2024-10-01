@@ -8,7 +8,7 @@ namespace CSFormsFoamDartFactorySimulator
 
         private CreditsSystem cSystem;
         private FoamDartsSystem fdSystem;
-        private float formFPS = 5;
+        private double formFPS = 5;
         private ulong startingCredits = 1000;
 
         public Form1()
@@ -20,8 +20,8 @@ namespace CSFormsFoamDartFactorySimulator
             timer1.Interval = 1000 / (int)formFPS;    // 1 FPS frames
             timer1.Start();
 
-            cSystem = new CreditsSystem(startingCredits);
-            fdSystem = new FoamDartsSystem();
+            cSystem = new CreditsSystem(startingCredits, formFPS);
+            fdSystem = new FoamDartsSystem(formFPS);
 
             UpdateDisplay();
         }
@@ -41,21 +41,18 @@ namespace CSFormsFoamDartFactorySimulator
 
             cSystem.CreditsSumList.Add(50);
             cSystem.CreditsMultList.Add(1.3333333);
-            fdSystem.FoamDartsSumList.Add(1);
+            fdSystem.FoamDartsSumList.Add(2);
 
             cSystem.CreditsUpdate();
             fdSystem.FoamDartsUpdate();
-            
+
         }
 
         public void UpdateDisplay()
         {
-            creditsLabel.Text = cSystem.Credits.ToString();
-            creditsTotalLabel.Text = cSystem.CreditsTotal.ToString();
-            foamDartsLabel.Text = fdSystem.FoamDarts.ToString();
-            foamDartsTotalLabel.Text = fdSystem.FoamDartsTotal.ToString();
+            creditsLabel.Text = ((ulong)cSystem.Credits).ToString();
+            foamDartsLabel.Text = ((ulong)fdSystem.FoamDarts).ToString();
+            foamDartProdRateLabel.Text = ((ulong)fdSystem.FoamDartsRate).ToString();
         }
-
-
     }
 }

@@ -8,8 +8,9 @@ namespace CSFormsFoamDartFactorySimulator
 {
     internal class FoamDartsSystem
     {
-        private ulong _foamDarts;
-        public ulong FoamDarts
+        private double _updateRate;
+        private double _foamDarts;
+        public double FoamDarts
         {
             get
             {
@@ -24,20 +25,27 @@ namespace CSFormsFoamDartFactorySimulator
                 _foamDarts = value;
             }
         }
-        public ulong FoamDartsTotal { get; set; }
-        public List<ulong> FoamDartsSumList { get; set; }
-        public List<double> FoamDartsMultList { get; set; }
 
-        public FoamDartsSystem()
+        public double FoamDartsTotal { get; set; }
+        public List<double> FoamDartsSumList { get; set; }
+        public List<double> FoamDartsMultList { get; set; }
+        public double FoamDartsRate { get; set; }
+
+        public FoamDartsSystem(double updateRate)
         {
             FoamDarts = 0;
             FoamDartsTotal = FoamDarts;
-            FoamDartsSumList = new List<ulong>();
+            FoamDartsSumList = new List<double>();
             FoamDartsMultList = new List<double>();
+            _updateRate = updateRate;
         }
 
-        private ulong FoamDartsSum() { return FoamDartsSumList.Aggregate((a, c) => a + c); }
+        private double FoamDartsSum() { return FoamDartsSumList.Aggregate((a, c) => a + c); }
         private double FoamDartsMultiplier() { return (FoamDartsMultList.Count() > 0) ? FoamDartsMultList.Aggregate((a, c) => a * c) : 1; }
-        public void FoamDartsUpdate() { FoamDarts += (ulong)(FoamDartsMultiplier() * FoamDartsSum()); }
+        public void FoamDartsUpdate() 
+        {
+            FoamDartsRate = FoamDartsMultiplier() * FoamDartsSum();
+            FoamDarts += 1.0f / _updateRate * FoamDartsRate; 
+        }
     }
 }

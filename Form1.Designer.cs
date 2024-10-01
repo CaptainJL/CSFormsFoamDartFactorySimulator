@@ -33,8 +33,10 @@
             statsListBox = new ListBox();
             foamDartsLabel = new Label();
             creditsLabel = new Label();
-            creditsTotalLabel = new Label();
-            foamDartsTotalLabel = new Label();
+            FoamDartSellRateLabel = new Label();
+            foamDartProdRateLabel = new Label();
+            label5 = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -86,33 +88,55 @@
             creditsLabel.TabIndex = 7;
             creditsLabel.Text = "0";
             // 
-            // creditsTotalLabel
+            // FoamDartSellRateLabel
             // 
-            creditsTotalLabel.AutoSize = true;
-            creditsTotalLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            creditsTotalLabel.Location = new Point(466, 39);
-            creditsTotalLabel.Name = "creditsTotalLabel";
-            creditsTotalLabel.Size = new Size(19, 21);
-            creditsTotalLabel.TabIndex = 8;
-            creditsTotalLabel.Text = "0";
+            FoamDartSellRateLabel.AutoSize = true;
+            FoamDartSellRateLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            FoamDartSellRateLabel.Location = new Point(543, 39);
+            FoamDartSellRateLabel.Name = "FoamDartSellRateLabel";
+            FoamDartSellRateLabel.Size = new Size(19, 21);
+            FoamDartSellRateLabel.TabIndex = 13;
+            FoamDartSellRateLabel.Text = "0";
             // 
-            // foamDartsTotalLabel
+            // foamDartProdRateLabel
             // 
-            foamDartsTotalLabel.AutoSize = true;
-            foamDartsTotalLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            foamDartsTotalLabel.Location = new Point(466, 9);
-            foamDartsTotalLabel.Name = "foamDartsTotalLabel";
-            foamDartsTotalLabel.Size = new Size(19, 21);
-            foamDartsTotalLabel.TabIndex = 9;
-            foamDartsTotalLabel.Text = "0";
+            foamDartProdRateLabel.AutoSize = true;
+            foamDartProdRateLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            foamDartProdRateLabel.Location = new Point(543, 9);
+            foamDartProdRateLabel.Name = "foamDartProdRateLabel";
+            foamDartProdRateLabel.Size = new Size(19, 21);
+            foamDartProdRateLabel.TabIndex = 12;
+            foamDartProdRateLabel.Text = "0";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(344, 39);
+            label5.Name = "label5";
+            label5.Size = new Size(166, 21);
+            label5.TabIndex = 11;
+            label5.Text = "Foam Bullets Sell Rate:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(344, 9);
+            label6.Name = "label6";
+            label6.Size = new Size(177, 21);
+            label6.TabIndex = 10;
+            label6.Text = "Foam Bullets Prod. Rate:";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1280, 720);
-            Controls.Add(foamDartsTotalLabel);
-            Controls.Add(creditsTotalLabel);
+            Controls.Add(FoamDartSellRateLabel);
+            Controls.Add(foamDartProdRateLabel);
+            Controls.Add(label5);
+            Controls.Add(label6);
             Controls.Add(creditsLabel);
             Controls.Add(foamDartsLabel);
             Controls.Add(statsListBox);
@@ -131,7 +155,9 @@
         private ListBox statsListBox;
         private Label foamDartsLabel;
         private Label creditsLabel;
-        private Label creditsTotalLabel;
-        private Label foamDartsTotalLabel;
+        private Label FoamDartSellRateLabel;
+        private Label foamDartProdRateLabel;
+        private Label label5;
+        private Label label6;
     }
 }
